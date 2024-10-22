@@ -50,7 +50,7 @@ jobs:
       
       - name: Login to Azure
         uses: azure/login@v2
-       with:
+        with:  # Ensure correct alignment of 'with'
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_6A0F3CAA0956402BB6A65F4855ECE19E }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D96E1A23CB054052B2F2B3063C4FD23A }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EB7540E5F8DF428C838C4F2B81760CA1 }}
