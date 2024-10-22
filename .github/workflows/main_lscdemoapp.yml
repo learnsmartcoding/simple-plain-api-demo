@@ -24,11 +24,14 @@ jobs:
       - name: dotnet publish
         run: dotnet publish -c Release -o ./myapp  # Use a relative path
 
+      - name: Zip the published application
+        run: Compress-Archive -Path ./myapp/* -DestinationPath ./myapp.zip  # Zip the output
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ./myapp  # Reference the relative path
+          path: ./myapp.zip  # Upload the zip file
 
   deploy:
     runs-on: windows-latest
@@ -58,4 +61,4 @@ jobs:
         with:
           app-name: 'lscdemoapp'
           slot-name: 'Production'
-          package: ./myapp  # Reference the relative path for deployment
+          package: ./myapp.zip  # Deploy the zipped package
